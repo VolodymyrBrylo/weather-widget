@@ -1,0 +1,31 @@
+{
+  "name": "Weather widget",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Volodymyr Brylo",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "*",
+    "cssnano": "*",
+    "gulp": "*",
+    "gulp-concat": "*",
+    "gulp-cssnano": "*",
+    "gulp-imagemin": "*",
+    "gulp-install": "*",
+    "gulp-jade": "*",
+    "gulp-livereload": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-tinypng": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "rename": "*"
+  },
+  "dependencies": {
+    "animate.css": "*"
+  },
+  "description": ""
+}
