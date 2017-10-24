@@ -1,5 +1,5 @@
 {
-  "name": "Weather widget",
+  "name": "Weather_widget",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
@@ -8,24 +8,24 @@
   "author": "Volodymyr Brylo",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "*",
-    "cssnano": "*",
-    "gulp": "*",
-    "gulp-concat": "*",
-    "gulp-cssnano": "*",
-    "gulp-imagemin": "*",
-    "gulp-install": "*",
-    "gulp-jade": "*",
-    "gulp-livereload": "*",
-    "gulp-rename": "*",
-    "gulp-sass": "*",
-    "gulp-tinypng": "*",
-    "gulp-uglify": "*",
-    "gulp-util": "*",
-    "rename": "*"
+    "browser-sync": "^2.18.13",
+    "cssnano": "^3.10.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-install": "^1.1.0",
+    "gulp-jade": "^1.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-tinypng": "^1.0.2",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8",
+    "rename": "^1.0.4"
   },
   "dependencies": {
-    "animate.css": "*"
+    "animate.css": "^3.5.2"
   },
-  "description": ""
+  "description": "1sdsfd"
 }
