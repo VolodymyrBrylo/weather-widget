@@ -1,12 +1,9 @@
 $(document).ready(function () {
-    var city = "london";
-
+    var city = 'Lviv';
     var weatheaIcoId;
     var locationsLat,
         locationLon;
-
     var countryCode;
-
 
     function getWeather(city) { // API Get weather information
         var api = '555b9c27e29c4f5cbdb93fa9a5dcbcc6',
@@ -29,22 +26,17 @@ $(document).ready(function () {
                 locationLon = data.coord.lon;
                 countryCode = data.sys.country;
 
-
                 $('.curentCity').text(curentCity);
-
                 $('.temp').text(temp + '°');
                 $('.temp_max').text('max ' + temp_max + '°');
                 $('.temp_min').text('min ' + temp_min + '°');
 
-
                 getIcon(weatheaIcoId);
-
                 googleMaps();
-
+                getTimeZone(countryCode);
             }
         });
     }
-
 
     function getIcon(icoId) { // Get weather icon and weather label
 
@@ -261,22 +253,44 @@ $(document).ready(function () {
         });
     }
 
-    function Autocomplete () {
-        // new TeleportAutocomplete({
-        //     el: '.my-input',
-        //     maxItems: 5,
-        //     itemTemplate: function (item) {
-        //         return this.wrapMatches(item.name);
-        //     }
-        // });
-        TeleportAutocomplete.init('.my-input', {itemTemplate: function (item) {
-            return this.wrapMatches(item.name);
-        }}).on('change', function(value) { console.log(value); });
-    };
+    function Autocomplete() {
+
+        TeleportAutocomplete.init('.my-input', {
+            maxItems: 3,
+            itemTemplate: function (item) {
+                return this.wrapMatches(item.name);
+            }
+        }).on('change', function (value) {
+            city = value.name;
+
+            getWeather(city);
+        });
+    }
 
     Autocomplete();
 
 
-    getWeather(city);
+    function getTimeZone(country) {
+        var key = 'ZU85C6IM2YNW',
+            baseUrl = 'http://api.timezonedb.com/v2/list-time-zone';
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl,
+            data: {
+                country: country,
+                key: key,
+                format: 'json',
+                units: 'metric'
+            },
+            success: function (zone) {
+                var time = zone.zones[0].timestamp;
+                var newTime = new Date(time * 1000);
+
+                $('.time').text(newTime.getUTCHours() + ":" + newTime.getUTCMinutes());
+            }
+        });
+    }
+
 
 });

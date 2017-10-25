@@ -15,7 +15,7 @@ body {
   width: 100vw;
   height: auto;
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   left: 0;
   text-align: center;
   background: rgba(0, 0, 0, 0.6); }
@@ -29,6 +29,17 @@ body {
 
 .widget .temp-wrap .temp {
   font-size: 36px; }
+
+.widget .time {
+  margin-bottom: 15px;
+  font-size: 26px; }
+
+.widget .live-search {
+  display: block;
+  width: 100%; }
+
+.widget .live-search .tp-autocomplete {
+  display: inline-block; }
 
 .map {
   z-index: 10;

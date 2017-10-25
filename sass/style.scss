@@ -27,7 +27,7 @@ body {
   width: 100vw;
   height: auto;
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   left: 0;
   text-align: center;
   background: rgba($b, .6);
@@ -50,6 +50,20 @@ body {
     }
     .temp_min{
 
+    }
+  }
+
+  .time{
+    margin-bottom: 15px;
+    font-size: 26px;
+  }
+
+  .live-search{
+    display: block;
+    width: 100%;
+
+    .tp-autocomplete{
+      display: inline-block;
     }
   }
 }
