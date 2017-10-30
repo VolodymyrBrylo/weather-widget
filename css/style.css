@@ -4,9 +4,16 @@
   box-sizing: border-box; }
 
 body {
+  font-family: 'Roboto', sans-serif;
   position: relative;
   height: 100vh;
   overflow: hidden; }
+
+.widget-wrap.hide {
+  opacity: 0; }
+
+.widget-wrap.show {
+  opacity: 1; }
 
 .widget {
   padding: 50px;
@@ -15,28 +22,71 @@ body {
   width: 100vw;
   height: auto;
   position: absolute;
-  bottom: 15%;
+  bottom: 5%;
   left: 0;
   text-align: center;
   background: rgba(0, 0, 0, 0.6); }
 
-.widget .weatheaIco {
-  font-size: 80px;
-  float: left; }
+.widget .top-bar {
+  width: 100%; }
 
-.widget .temp-wrap i {
-  font-size: 30px; }
+.widget .top-bar .city-info {
+  display: inline-block; }
 
-.widget .temp-wrap .temp {
+.widget .top-bar .city-info .curentCity {
+  font-size: 26px; }
+
+.widget .top-bar .city-info .curentCity i {
+  padding-right: 10px; }
+
+.widget .top-bar .city-info .time {
+  margin-bottom: 15px;
   font-size: 36px; }
 
-.widget .time {
-  margin-bottom: 15px;
-  font-size: 26px; }
+.widget .top-bar .city-info .time i {
+  font-size: 24px;
+  padding-right: 10px; }
+
+.widget .top-bar .ico-wrap {
+  display: inline-block;
+  margin-right: 40px; }
+
+.widget .top-bar .ico-wrap .weatheaIco {
+  font-size: 52px; }
+
+.widget .top-bar .ico-wrap .weatheaIcoLabel {
+  text-transform: capitalize; }
+
+.widget .temp-wrap {
+  width: 100%;
+  margin-bottom: 15px; }
+
+.widget .temp-wrap .temp {
+  font-size: 36px;
+  display: inline-block;
+  padding-right: 10px; }
+
+.widget .temp-wrap .temp i {
+  font-size: 30px;
+  padding-right: 10px; }
+
+.widget .temp-wrap .temp span {
+  font-size: 60px; }
+
+.widget .temp-wrap .a_information {
+  display: inline-block; }
+
+.widget .temp-wrap .a_information i {
+  font-size: 18px;
+  padding-right: 5px; }
+
+.widget .temp-wrap .a_information .temp_max {
+  margin-bottom: 15px; }
 
 .widget .live-search {
   display: block;
-  width: 100%; }
+  width: 100%;
+  clear: both; }
 
 .widget .live-search .tp-autocomplete {
   display: inline-block; }

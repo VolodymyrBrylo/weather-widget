@@ -1,11 +1,7 @@
 $(document).ready(function () {
-    var city = 'Lviv';
-    var weatheaIcoId;
-    var locationsLat,
-        locationLon;
-    var countryCode;
 
-    function getWeather(city) { // API Get weather information
+    var city, weatheaIcoId, locationsLat, locationLon, countryCode;
+    function getWeather(city) {
         var api = '555b9c27e29c4f5cbdb93fa9a5dcbcc6',
             baseUrl = 'http://api.openweathermap.org/data/2.5/weather';
 
@@ -16,7 +12,7 @@ $(document).ready(function () {
             success: function (data) {
                 weatheaIcoId = data.weather[0].id;
                 var curentCity = data.name;
-                var temp = data.main.temp;
+                var temp = Math.round(data.main.temp);
                 var temp_max = data.main.temp_max;
                 var temp_min = data.main.temp_min;
                 var humidity = data.main.humidity;
@@ -26,32 +22,73 @@ $(document).ready(function () {
                 locationLon = data.coord.lon;
                 countryCode = data.sys.country;
 
-                $('.curentCity').text(curentCity);
-                $('.temp').text(temp + '°');
-                $('.temp_max').text('max ' + temp_max + '°');
-                $('.temp_min').text('min ' + temp_min + '°');
+                $('.curentCity span, title').text(curentCity);
+                $('title').text('Weather in city ' + curentCity);
+                $('.temp span').text(temp + '°');
+                $('.temp_max span').text('max ' + temp_max + '°');
+                $('.temp_min span').text('min ' + temp_min + '°');
+                $('.wind .wi').addClass('wi-wind-beaufort-'+ windSpeed);
 
                 getIcon(weatheaIcoId);
                 googleMaps();
                 getTimeZone(countryCode);
+
+                console.log(data);
+            }
+        });
+    }  // API Get weather information
+
+    function getTimeZone(country) {
+        var key = 'ZU85C6IM2YNW',
+            baseUrl = 'http://api.timezonedb.com/v2/list-time-zone';
+
+        $.ajax({
+            type: "GET",
+            url: baseUrl,
+            data: {
+                country: country,
+                key: key,
+                format: 'json',
+                units: 'metric'
+            },
+            success: function (zone) {
+                var time = zone.zones[0].timestamp;
+                var newTime = new Date(time * 1000);
+
+                var hour;
+                if (newTime.getUTCHours() < 10) {
+                    hour = '0' + newTime.getUTCHours();
+                } else {
+                    hour = newTime.getUTCHours();
+                }
+
+                var min;
+                if (newTime.getUTCMinutes() < 10) {
+                    min = '0' + newTime.getUTCMinutes();
+                } else {
+                    min = newTime.getUTCMinutes();
+                }
+
+
+                $('.time span').text(hour + ":" + min);
             }
         });
     }
 
-    function getIcon(icoId) { // Get weather icon and weather label
-
+    function getIcon(icoId) {
+        console.log(weatheaIcoId);
         $.ajax({
             type: "POST",
             url: 'js/icon.json',
             success: function (ico) {
                 var weatheaIcoClassName = ico[icoId].icon;
                 var weatheaIcoLabel = ico[icoId].label;
-
                 $('.weatheaIco').addClass('wi-day-' + weatheaIcoClassName);
                 $('.weatheaIcoLabel').text(weatheaIcoLabel);
+
             }
         });
-    }
+    } // Get weather icon and weather label
 
     function googleMaps() {
         var styles = [
@@ -249,7 +286,9 @@ $(document).ready(function () {
 
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(locationsLat, locationLon),
-            map: map
+            map: map,
+            icon: 'map-marker.png',
+            title: 'This is city ' + city
         });
     }
 
@@ -257,12 +296,12 @@ $(document).ready(function () {
 
         TeleportAutocomplete.init('.my-input', {
             maxItems: 3,
+            geoLocate: false,
             itemTemplate: function (item) {
                 return this.wrapMatches(item.name);
             }
         }).on('change', function (value) {
             city = value.name;
-
             getWeather(city);
         });
     }
@@ -270,27 +309,9 @@ $(document).ready(function () {
     Autocomplete();
 
 
-    function getTimeZone(country) {
-        var key = 'ZU85C6IM2YNW',
-            baseUrl = 'http://api.timezonedb.com/v2/list-time-zone';
-
-        $.ajax({
-            type: "GET",
-            url: baseUrl,
-            data: {
-                country: country,
-                key: key,
-                format: 'json',
-                units: 'metric'
-            },
-            success: function (zone) {
-                var time = zone.zones[0].timestamp;
-                var newTime = new Date(time * 1000);
-
-                $('.time').text(newTime.getUTCHours() + ":" + newTime.getUTCMinutes());
-            }
-        });
-    }
-
 
 });
+
+window.onload = function() {
+    $(".my-input").focus();
+};

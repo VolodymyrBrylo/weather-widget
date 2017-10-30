@@ -9,15 +9,25 @@ $b: black;
 
 @mixin center {
   position: absolute;
-  bottom: 20%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, -50%);
 }
 
 body {
+  font-family: 'Roboto', sans-serif;
   position: relative;
   height: 100vh;
   overflow: hidden;
+}
+
+.widget-wrap {
+  &.hide {
+    opacity: 0;
+  }
+  &.show {
+    opacity: 1;
+  }
 }
 
 .widget {
@@ -27,42 +37,85 @@ body {
   width: 100vw;
   height: auto;
   position: absolute;
-  bottom: 15%;
+  bottom: 5%;
   left: 0;
   text-align: center;
   background: rgba($b, .6);
-  
-  .weatheaIco{
-    font-size: 80px;
-    float: left;
+
+  .top-bar {
+    width: 100%;
+    .city-info {
+      display: inline-block;
+      .curentCity {
+        font-size: 26px;
+        i {
+          padding-right: 10px;
+        }
+      }
+
+      .time {
+        margin-bottom: 15px;
+        font-size: 36px;
+        i {
+          font-size: 24px;
+          padding-right: 10px;
+        }
+      }
+    }
+
+    .ico-wrap {
+      display: inline-block;
+      margin-right: 40px;
+      .weatheaIco {
+        font-size: 52px;
+      }
+      .weatheaIcoLabel{
+        text-transform: capitalize;
+      }
+    }
+
   }
 
-  .temp-wrap{
-    i{
-      font-size: 30px;
-    }
-    .temp{
-      font-size: 36px;
-
-    }
-    .temp_max{
-
-    }
-    .temp_min{
-
-    }
-  }
-
-  .time{
+  .temp-wrap {
+    width: 100%;
     margin-bottom: 15px;
-    font-size: 26px;
+
+    .temp {
+      font-size: 36px;
+      display: inline-block;
+      padding-right: 10px;
+      i {
+        font-size: 30px;
+        padding-right: 10px;
+      }
+
+      span {
+        font-size: 60px;
+      }
+    }
+    .a_information {
+      display: inline-block;
+      i {
+        font-size: 18px;
+        padding-right: 5px;
+      }
+      .temp_max {
+        margin-bottom: 15px;
+
+      }
+      .temp_min {
+
+      }
+    }
+
   }
 
-  .live-search{
+  .live-search {
     display: block;
     width: 100%;
+    clear: both;
 
-    .tp-autocomplete{
+    .tp-autocomplete {
       display: inline-block;
     }
   }

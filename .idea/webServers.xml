@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="69597b4e-c455-4b47-b198-65f2a558e925" name="weather" url="http://cikavo-znaty.com">
+        <fileTransfer host="cikavo-znaty.com" port="21" rootFolder="/web/cikavo-znaty.com/public_html/weather">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
